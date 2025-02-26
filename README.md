@@ -28,7 +28,7 @@ The implementation of this project follows a structured approach to analyze web 
 Each query serves a specific purpose in extracting valuable insights from raw log data. Below is a breakdown of how each 
 analysis task is implemented:
 
-1. Creating an External Table
+# 1. Creating an External Table
 
 The new_web_server_logs table is created using Apache Hive.
 It stores log data with relevant attributes such as ip, timestamp1, url, status, and user_agent.
