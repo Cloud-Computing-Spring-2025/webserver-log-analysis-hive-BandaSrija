@@ -116,6 +116,10 @@ GROUP BY SUBSTRING(timestamp1, 1, 16)
 ORDER BY minute_time;
 
 
+#### Output
+
+Output of each query is stored in csv file with query-<querynymber>-output as file name
+
 ### Challenges Faced
 
 Timestamp Parsing Issues: Formatting inconsistencies in timestamps required adjustments in query logic.
