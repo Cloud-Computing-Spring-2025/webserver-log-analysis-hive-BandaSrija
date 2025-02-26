@@ -22,7 +22,7 @@ Detect Suspicious Activity: Finds IP addresses with more than three failed reque
 Analyze Traffic Trends: Computes the number of requests per minute to observe traffic patterns.
 
 
-### Implementation Approach
+### Implementation Approach & Execution Steps
 
 The implementation of this project follows a structured approach to analyze web server logs using Apache Hive. 
 Each query serves a specific purpose in extracting valuable insights from raw log data. Below is a breakdown of how each 
