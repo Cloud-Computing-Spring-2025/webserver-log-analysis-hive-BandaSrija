@@ -47,14 +47,14 @@ STORED AS TEXTFILE
 LOCATION '/user/hive/web_logs/';
 
 
-2. Loading Data into Hive Table
+#### 2. Loading Data into Hive Table
 
 The LOAD DATA command imports CSV log data into the Hive table.
 The CSV file is stored in HDFS (/user/hue/web_server_logs.csv).
 
 LOAD DATA INPATH '/user/hue/web_server_logs.csv' INTO TABLE web_server_logs;
 
-3. Counting Total Web Requests
+#### 3. Counting Total Web Requests
 
 A simple COUNT(*) query is used to determine the total number of processed requests.
 
@@ -62,7 +62,7 @@ SELECT CONCAT('Total Web Requests: ', COUNT(*)) AS total_requests
 FROM web_server_logs;
 
 
-4. Analyzing Status Codes
+#### 4. Analyzing Status Codes
 
 This query groups logs by HTTP status codes (e.g., 200, 404, 500) and counts occurrences.
 The ORDER BY clause ensures that the most frequent statuses appear first.
@@ -72,7 +72,7 @@ FROM web_server_logs
 GROUP BY status
 ORDER BY count DESC;
 
-5. Identifying the Most Visited Pages
+#### 5. Identifying the Most Visited Pages
 
 The GROUP BY and COUNT(*) functions are used to rank the most frequently visited URLs.
 The LIMIT 3 clause ensures that only the top 3 pages are displayed.
@@ -83,7 +83,7 @@ GROUP BY url
 ORDER BY count DESC
 LIMIT 3;
 
-6. Analyzing Traffic Sources (User Agents)
+#### 6. Analyzing Traffic Sources (User Agents)
 
 The user_agent column identifies different browsers used by visitors.
 The query counts occurrences of each user agent and sorts them in descending order.
@@ -94,7 +94,7 @@ GROUP BY user_agent
 ORDER BY request_count DESC
 LIMIT 3;
 
-7. Detecting Suspicious Activity
+#### 7. Detecting Suspicious Activity
 
 This query identifies IP addresses that have more than 3 failed requests (status 404 or 500).
 The HAVING COUNT(*) > 3 condition filters out normal traffic.
@@ -105,7 +105,7 @@ WHERE status IN (404, 500)
 GROUP BY ip
 HAVING COUNT(*) > 3;
 
-8. Analyzing Traffic Trends
+#### 8. Analyzing Traffic Trends
 
 The timestamp1 field (in YYYY-MM-DD HH:MM:SS format) is truncated to the minute level (YYYY-MM-DD HH:MM).
 This allows counting the number of requests per minute to observe traffic patterns over time.
