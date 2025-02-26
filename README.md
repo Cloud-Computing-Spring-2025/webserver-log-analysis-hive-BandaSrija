@@ -2,9 +2,24 @@
 
 ### Overview
 
-This project analyzes web server logs using Apache Hive to extract meaningful insights such as traffic trends, most visited pages, status code distribution, and suspicious activities. The data is stored in an external Hive table and queried using SQL-like commands.
+This project analyzes web server logs using Apache Hive to extract meaningful insights such as traffic trends, most visited pages, 
+status code distribution, and suspicious activities. The data is stored in an external Hive table and queried using SQL-like commands.
 
+### Implementation Approach
 
+The analysis is performed using the following queries:
+
+Count Total Web Requests: Counts the total number of requests received.
+
+Analyze Status Codes: Identifies the frequency of HTTP status codes.
+
+Identify Most Visited Pages: Extracts the top three most visited URLs.
+
+Traffic Source Analysis: Identifies the most common user agents (browsers).
+
+Detect Suspicious Activity: Finds IP addresses with more than three failed requests (404 or 500 errors).
+
+Analyze Traffic Trends: Computes the number of requests per minute to observe traffic patterns.
 
 ### Steps to Execute
 ### Create table
@@ -75,6 +90,15 @@ SELECT SUBSTRING(timestamp1, 1, 16) AS minute_time, COUNT(*) AS request_count
 FROM web_server_logs
 GROUP BY SUBSTRING(timestamp1, 1, 16)
 ORDER BY minute_time;
+
+
+### Challenges Faced
+
+Timestamp Parsing Issues: Formatting inconsistencies in timestamps required adjustments in query logic.
+
+Data Ingestion Errors: Some records contained missing fields, requiring data cleansing before loading into Hive.
+
+Query Optimization: Performance tuning was necessary for large datasets by using partitioning and indexing.
 
 
 ### Sample Input Data (web_server_logs.csv)
